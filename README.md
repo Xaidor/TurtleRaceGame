@@ -7,9 +7,9 @@
 ####     Step 2: Create and position the racers.
 ####     Step 3: Randomize each racer's forward movement.
 ####     Step 4: Add a twist: each racer gets a mystery box after 3 moves.
-####         The mystery box gives either:
-####           - a speed boost, OR
-####           - a fireball attack that spins and slows the other racers.
+                        The mystery box gives either:
+                            - a speed boost, OR
+                             - a fireball attack that spins and slows the other racers.
 ####     Step 5: Identify the winner and display the result on the screen.
 
 ### Things to still do:
