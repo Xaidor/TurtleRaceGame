@@ -20,3 +20,5 @@
         For testing purposes, the powerup is given after each racers 3rd move.
     - MysteryBox Image 
         Determine the size, color, and style. Will it move or be startionary?
+    - Ask user to select a racer they think will win
+    - Tally loses and wins of users selected racer
