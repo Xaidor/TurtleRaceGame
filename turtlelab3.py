@@ -115,9 +115,46 @@ def TempMessages(t_obj, message, duration=1.5):
     msg.goto(x, y + 20)
 
     # Display message
-    msg.write(message, align="center", font=("Arial", 12, "bold"))
+    msg.write(message, align="center", 
+              font=("Arial", 12, "bold"))
     time.sleep(duration)
     msg.clear()
+
+    
+
+# Ask user which racer they think will when
+def UserChoice(t_racer , totals):
+    select_turtle = str()
+    choice = str
+    highest = int()
+    msg = str()
+    wins = int()
+    loses = int()
+    
+    highest = totals[0]
+    
+    for index in range(0, len(t_racer)):
+        if select_turtle == t_racer[index]:
+            choice = "You've selected racer"+ str(index + 1)
+        for i in range(0, len(totals)):
+            
+            if totals[i] > highest:
+                highest = totals[i]
+
+        if highest == choice:
+            msg = "Your racer WON!"
+            wins += 1
+        else:
+            msg = "Your racer didn't win"
+            loses += 1
+
+    return wins, loses
+        
+
+
+
+            
+    return choice
     
 def main():
     # Decalre Variables
@@ -150,6 +187,8 @@ def main():
     t.write(winner, 
             align="center", 
             font=("Comic Sans MS", 28, "bold"))
+    
+    #
     
 
 main()
