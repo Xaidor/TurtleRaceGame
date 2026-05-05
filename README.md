@@ -27,19 +27,10 @@ Step 5 → First racer to cross the finish line wins.
          The game tells the user if their chosen racer won or lost.
 
 ```
------
+---
 ## Things Still To Do
 
 ### 🟪 MysteryBox Function
-- The `MysteryBox` will eventually be triggered **inside `StartRace()`**.
-- It should **disappear** after a racer reaches it.
-- Boxes can appear at a **fixed location** or a **random location**.
-- Each box must be **aligned with the racer’s lane** so collisions make sense.
-- *(For now, the power‑up triggers automatically after each racer’s 3rd move — testing mode.)*
-
----
-
-### Things to still do:
     - MysterBox Function
         The mysterbox would need to be called in the StartRace function. I will disappear
         after a racer reaches it at a set loctation or random loction. The locations of 
