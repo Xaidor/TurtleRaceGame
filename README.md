@@ -1,7 +1,7 @@
 # 🐢 Turtle Racers 
 ---
 
-# 🎯 Goal
+#  Goal
 ### Using `turtle`, create:
 - A race between **3 racers**, each a different color  
 - A **user choice** of which racer will win  
@@ -10,7 +10,7 @@
 
 ---
 
-# 🧠 How the Game Works
+#  How the Game Works
 
 ```text
 Step 1 → Draw the race layout (start + finish line)
@@ -39,28 +39,6 @@ Step 5 → First racer to cross the finish line wins.
 
 ---
 
-### MysteryBox Image / Visual Design
-- Decide the **size**, **color**, and **style** of the box.
-- Should it be **stationary** or **animated**?
-- Consider adding a small **icon** or **pattern** to make it recognizable.
-
----
-
-### User Interaction
-- [x] Ask user to select a racer  
-- [x] Tally wins and losses for the selected racer  
-
----
-
-## 🧹 Code Cleanup (In Progress)
-![Cleanup Progress](https://progress-bar.xyz/60/?title=Cleanup%20In%20Progress)
-
-### Cleanup Tasks
-- [ ] Add detailed notes  
-- [ ] Boldly section each function so they’re easy to find  
-- [ ] Improve readability  
-- [ ] Remove unnecessary variables  
-- [ ] Improve variable names for clarity  
 ### Things to still do:
     - MysterBox Function
         The mysterbox would need to be called in the StartRace function. I will disappear
