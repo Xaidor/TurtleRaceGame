@@ -1,6 +1,4 @@
-# 🐢 Turtle Racer Showdown  
-### *A chaotic, colorful, power‑up‑filled race built with Python Turtle*
-
+# 🐢 Turtle Racers 
 ---
 
 # 🎯 Goal
@@ -29,6 +27,40 @@ Step 5 → First racer to cross the finish line wins.
          The game tells the user if their chosen racer won or lost.
 
 
+
+## Things Still To Do
+
+### 🟪 MysteryBox Function
+- The `MysteryBox` will eventually be triggered **inside `StartRace()`**.
+- It should **disappear** after a racer reaches it.
+- Boxes can appear at a **fixed location** or a **random location**.
+- Each box must be **aligned with the racer’s lane** so collisions make sense.
+- *(For now, the power‑up triggers automatically after each racer’s 3rd move — testing mode.)*
+
+---
+
+### MysteryBox Image / Visual Design
+- Decide the **size**, **color**, and **style** of the box.
+- Should it be **stationary** or **animated**?
+- Consider adding a small **icon** or **pattern** to make it recognizable.
+
+---
+
+### User Interaction
+- [x] Ask user to select a racer  
+- [x] Tally wins and losses for the selected racer  
+
+---
+
+## 🧹 Code Cleanup (In Progress)
+![Cleanup Progress](https://progress-bar.xyz/60/?title=Cleanup%20In%20Progress)
+
+### Cleanup Tasks
+- [ ] Add detailed notes  
+- [ ] Boldly section each function so they’re easy to find  
+- [ ] Improve readability  
+- [ ] Remove unnecessary variables  
+- [ ] Improve variable names for clarity  
 ### Things to still do:
     - MysterBox Function
         The mysterbox would need to be called in the StartRace function. I will disappear
