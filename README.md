@@ -26,8 +26,8 @@ Step 4 → After 3 moves, each racer hits a Mystery Box:
 Step 5 → First racer to cross the finish line wins.
          The game tells the user if their chosen racer won or lost.
 
-
-
+```
+-----
 ## Things Still To Do
 
 ### 🟪 MysteryBox Function
