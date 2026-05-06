@@ -215,9 +215,9 @@ def main():
     choice = str()
     wins = int()
     losses = int()
-    msg = str()
+    result = str()
     
-    # Initialize variables
+    # Initialize Variables
     total_wins = 0
     total_losses = 0
     play = "yes"
@@ -233,9 +233,9 @@ def main():
     scoreboard.hideturtle()
     scoreboard.penup()
 
-    # ---------------------------------------------
+    # ---------------------------------------------------
     # Run Game 
-    # ---------------------------------------------
+    # ---------------------------------------------------
     while play == "yes":
         
         # Clear screen
@@ -243,58 +243,58 @@ def main():
         # Draw race layout
         Layout()
 
-        # Call Racers to create racers and store in a varible  
+        # Create racers 
         racers = Racers()
         
         # Get users choices
         choice = UserChoice(racers)
 
-        # Call StartRace and get the winner 
+        # Run race 
         totals, winner_msg = StartRace(racers)
 
-        
-        #---------------------------------------------------
-        # ALL MESSAGES ON SCREEN
-        #---------------------------------------------------
-        
-        # Winner message with outline effect 
-        # Set message loctation
-        main_msg.penup()
-        multi_msg[0].goto(0,200)
-        multi_msg[0].hideturtle()
 
-        # Outline (balck) 
-        multi_msg[0].color("Black")
-        multi_msg[0].write(winner_msg, 
-                align="center", 
-                font=("Comic Sans MS", 31, "bold"))
-
-        # Fill (CadetBlue1)
-        multi_msg[0].color("CadetBlue1")
-        multi_msg[0].write(winner_msg, 
-                align="center", 
-                font=("Comic Sans MS", 30, "bold"))
-        
-        # Print users wins and losses
-        wins, losses, msg = WinLose(choice, totals)
+        # ---------------------------------------------------
+        # DETERMINE WINS/LOSSES 
+        # ---------------------------------------------------
+        wins, losses, result = WinLose(choice, totals)
         total_wins += wins
         total_losses += losses
-    
+
         
-        scoreboard.penup()
-        multi_msg[1].goto(0,0)
-        multi_msg[1].hideturtle
+        #---------------------------------------------------
+        # MAIN MESSAGE 
+        # Declares The Winner
+        # Determines The Users Result
+        #---------------------------------------------------
+        main_msg.clear()
+        # Set message loctation
+        main_msg.goto(0,200)
+       
+        # Winner of the race message
+        # Outline (balck) 
+        main_msg.color("black")
+        main_msg.write(winner_msg,
+                       align="center",
+                       font=("Comic Sans MS", 31, "bold"))
 
-        # Let usr know if there racer won
-        multi_msg[1].color("Red")
-        multi_msg[1].write(msg,
-                           align="center",
-                           font=("Comic sans MS", 16, "normal"))
+        # Fill (CadetBlue1)
+        main_msg.color("CadetBlue1")
+        main_msg.write(winner_msg,
+                       align="center",
+                       font=("Comic Sans MS", 30, "bold"))
+        
+        # Users Result message 
+        main_msg.goto(0, 0)
+        main_msg.color("red")
+        main_msg.write(result,
+                       align="center",
+                       font=("Comic Sans MS", 16, "normal"))
 
-        # Tell the user how many wins or loses
-        multi_msg[2].penup()
-        multi_msg[2].goto(0,-100)
-        multi_msg[2].hideturtle()
+
+        # ---------------------------------------------------
+        # SCOREBOARD (Wins + Losses)
+        # ---------------------------------------------------
+        scoreboard.clear()
 
         multi_msg[2].color("Black")
         multi_msg[2].write("Wins: ",
