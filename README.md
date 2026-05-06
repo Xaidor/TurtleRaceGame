@@ -39,8 +39,8 @@ Step 5 → First racer to cross the finish line wins.
     - MysteryBox Image 
         Determine the size, color, and style. Will it move or be startionary?
     - Ask user to select a racer they think will win :white_check_mark:
-    - Tally loses and wins of users selected racer :white_check_mark:
-    - Clean up code (In Progress) 
+    - Tally loses and wins of users selected racer 
+    - Clean up code (In Progress)
             - Add detailed notes
             - Section each funchtion off boldly, so its easy to find
             ` Make the code more readable
