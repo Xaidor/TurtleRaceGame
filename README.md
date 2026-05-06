@@ -30,6 +30,11 @@ Step 5 → First racer to cross the finish line wins.
 ---
 ## Things Still To Do
 
+### Layout
+    - The turtles are hatching and are racing to the water.
+    - Background needs to resemble sand 
+    - Create a wavy blue finish line 
+
 ### 🟪 MysteryBox Function
     - MysterBox Function
         The mysterbox would need to be called in the StartRace function. I will disappear
@@ -38,11 +43,12 @@ Step 5 → First racer to cross the finish line wins.
         For testing purposes, the powerup is given after each racers 3rd move.
     - MysteryBox Image 
         Determine the size, color, and style. Will it move or be startionary?
-    - Ask user to select a racer they think will win :white_check_mark:
-    - Tally loses and wins of users selected racer 
+
+### Clean up/Debug
     - Clean up code (In Progress)
             - Add detailed notes
             - Section each funchtion off boldly, so its easy to find
             ` Make the code more readable
             ` Remeove unnecessary variables
             - Improve variable names for clarity
+

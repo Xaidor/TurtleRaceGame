@@ -6,6 +6,9 @@ import random
 import turtle as t
 
 #Create race layout
+# --------------------------------------------
+# TODO: change background to sand color and finish line needs to be blue
+# --------------------------------------------
 def Layout():
     t.pen(fillcolor="black", 
           pencolor="red", 
@@ -153,9 +156,14 @@ def TempMessages(t_obj, message, duration=1.5):
 def UserChoice():
     select_turtle = str()
    
-    select_turtle = input("Select a racer (gold/pink/gray): ")
+    select_turtle = input("Which racer do you think will make it to the water first? (gold/pink/gray): ")
 
     return select_turtle
+
+# ---------------------------------------------------------------------
+# Determines if the users chosen racer won
+# Returns win/loss count and a messgae
+# ---------------------------------------------------------------------
 
 def WinLose(select_turtle, totals):
     wins = int()
@@ -167,6 +175,7 @@ def WinLose(select_turtle, totals):
 
     highest = totals[0]
 
+    # Create index for the racers colors
     if select_turtle == "gold":
         index = 0
 
@@ -176,93 +185,103 @@ def WinLose(select_turtle, totals):
     elif select_turtle == "gray":
         index = 2
     
+    # get the index of the highest score 
     for i in range(0, len(totals)):    
         if totals[i] > highest:
             highest = totals[i]
             high_index = i
     
+    # Determine which racer actually won
     if high_index == index:
         msg = "Your racer WON!"
         wins +=1
     else:
         msg = "Your racer didn't win"
         loses += 1
-
+    # clears text on screen for user if they wish to play again
     t.clear()
 
     return wins, loses, msg
 
-    
+
+# ---------------------------------------------------------------------
+# MAIN GAME LOOP
+# ---------------------------------------------------------------------    
 def main():
     # Decalre Variables
-    set_racers = list()
-    totals = str() 
-    run_game = str()
-    winner = str()
-    choose_racer = str()
+    racers = list()
+    totals = list()
+    winner_msg = str()
+    choice = str()
     wins = int()
-    loses =int()
-    hold_wins = int()
-    hold_loses = int()
-    multi_msg = [t.Turtle(),t.Turtle(),t.Turtle()]
+    losses = int()
     msg = str()
-    choice_made = str()
-
-
-    run_game = "yes"
     
+    # Initialize variables
+    total_wins = 0
+    total_losses = 0
+    play = "yes"
 
-    while run_game == "yes":
-        
-        for i in range(0,3):
-            multi_msg[i].clear()
-        
+    # Turtles for messages 
+    main_msg = t.Turtle()
+    scoreboard = t.Turtle()
 
+    # Setup message turtles
+    main_msg.hideturtle()
+    main_msg.penup()
+
+    scoreboard.hideturtle()
+    scoreboard.penup()
+
+    # ---------------------------------------------
+    # Run Game 
+    # ---------------------------------------------
+    while play == "yes":
+        
+        # Clear screen
+        t.clear()
         # Draw race layout
         Layout()
 
         # Call Racers to create racers and store in a varible  
-        set_racers = Racers()
-
+        racers = Racers()
+        
         # Get users choices
-        choose_racer = UserChoice(set_racers)
-        t.penup()
-        t.goto(-230,0)
-        t.hideturtle()
-
-        t.color("Black")
-        t.write(choice_made,
-                align="center",
-                font= ("Arial", 8, "normal"))
+        choice = UserChoice(racers)
 
         # Call StartRace and get the winner 
-        totals, winner = StartRace(set_racers)
+        totals, winner_msg = StartRace(racers)
 
+        
+        #---------------------------------------------------
+        # ALL MESSAGES ON SCREEN
+        #---------------------------------------------------
+        
         # Winner message with outline effect 
         # Set message loctation
-        multi_msg[0].penup()
+        main_msg.penup()
         multi_msg[0].goto(0,200)
         multi_msg[0].hideturtle()
 
         # Outline (balck) 
         multi_msg[0].color("Black")
-        multi_msg[0].write(winner, 
+        multi_msg[0].write(winner_msg, 
                 align="center", 
                 font=("Comic Sans MS", 31, "bold"))
 
         # Fill (CadetBlue1)
         multi_msg[0].color("CadetBlue1")
-        multi_msg[0].write(winner, 
+        multi_msg[0].write(winner_msg, 
                 align="center", 
                 font=("Comic Sans MS", 30, "bold"))
         
         # Print users wins and losses
-        wins, loses, msg = WinLose(choose_racer, totals)
-        hold_wins += wins
-        hold_loses += loses
+        wins, losses, msg = WinLose(choice, totals)
+        total_wins += wins
+        total_losses += losses
     
-        # Ask user if theyd like to play again
-        multi_msg[1].penup()
+        
+        scoreboard.penup()
         multi_msg[1].goto(0,0)
         multi_msg[1].hideturtle
 
@@ -285,7 +304,7 @@ def main():
         multi_msg[2].goto(20,-100)
         multi_msg[2].hideturtle()
         multi_msg[2].color("Black")
-        multi_msg[2].write(hold_wins,
+        multi_msg[2].write(total_wins,
                            align="center",
                            font=("Arial", 8, "normal" ))
         
@@ -299,16 +318,16 @@ def main():
                            align= "center",
                            font=("Arial", 8, "normal" ))
         
-        multi_msg[2].penup()
+        scoreboard.penup()
         multi_msg[2].goto(20,-120)
         multi_msg[2].hideturtle()
         multi_msg[2].color("Black")
-        multi_msg[2].write(hold_loses,
+        multi_msg[2].write(total_losses,
                            align="center",
                            font=("Arial", 8, "normal" ))
 
         # Keep playing?
-        run_game = input("Would you like to play again? (yes/no): ")
+        play = input("Would you like to play again? (yes/no): ")
         
 
 main()
