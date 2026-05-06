@@ -33,6 +33,7 @@ def Layout():
 
     t.end_fill()
 
+
     # -----------------------------
     # WAVY PATTERN FOR FINISH LINE
     # -----------------------------
@@ -89,6 +90,7 @@ def Racers():
 
     return t_racers
 
+
 # ---------------------------------------------------------------------
 # randomize the distance each racer moves towards the finish line
 # ---------------------------------------------------------------------
@@ -132,6 +134,7 @@ def StartRace(t_racer):
             
     return totals, win
 
+
 # ---------------------------------------------------------------------
 # Power-Ups for mystery box: Fireball or Boost
 # Spin animation 
@@ -173,6 +176,7 @@ def PowerUp(racer_index, totals, t_racer):
     
     return totals
 
+
 # ---------------------------------------------------------------------
 # Displays a temporary message
 # Used for racers powerup recieved (BOOST or FIREBALL)
@@ -199,6 +203,7 @@ def TempMessages(t_obj, message, duration=1.5):
     time.sleep(duration)
     msg.clear()
 
+
 # ---------------------------------------------------------------------
 # Animation For Rock PowerUp Attack
 # ---------------------------------------------------------------------
@@ -207,6 +212,7 @@ def RockAnimation(attacker, victim):
     rock.hideturtle()
     rock.penup()
     rock.speed(0)
+    rock.clear()
 
     # Declare Variables 
     flag = bool()
@@ -261,16 +267,6 @@ def RockAnimation(attacker, victim):
         # Stop Loop
         if x_distance < attack_travel and y_distance < attack_travel:
             flag = False
-
-        
-
-        
-
-        
-        
-
-        
-
         
     
 # ---------------------------------------------------------------------
@@ -446,7 +442,3 @@ def main():
         
 
 main()
-
-
-
-
