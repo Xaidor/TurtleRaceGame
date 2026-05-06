@@ -10,15 +10,64 @@ import turtle as t
 # TODO: change background to sand color and finish line needs to be blue
 # --------------------------------------------
 def Layout():
-    t.pen(fillcolor="black", 
-          pencolor="red", 
-          pensize=10)
     t.hideturtle()
     t.penup()
-    t.goto(200, 190)
+    t.speed(0)
+
+    # Background
+    t.bgcolor("wheat1")
+
+    # -----------------------------
+    # OCEAN FILL (right side)
+    # -----------------------------
+    t.goto(200, 350)
+    t.color("blue4")
+    t.begin_fill()
+
+    t.setheading(0)
+    t.forward(250)   # width of ocean
+    t.right(90)
+    t.forward(800)   # height of ocean
+    t.right(90)
+    t.forward(250)
+    t.right(90)
+    t.forward(800)
+
+    t.end_fill()
+
+    # -----------------------------
+    # WAVY PATTERN FOR FINISH LINE
+    # -----------------------------
+    t.goto(200,350)
     t.setheading(-90)
+    t.pensize(8)
+    t.pencolor("blue4")
     t.pendown()
-    t.forward(300)
+
+    for wave in range(30):
+        t.right(20)
+        t.forward(30)
+        t.left(40)
+        t.forward(30)
+        t.right(20)
+
+    t.penup()
+
+    # Lighter Wave
+    t.goto(206,350)
+    t.setheading(-90)
+    t.pensize(8)
+    t.pencolor("DodgerBlue3")
+    t.pendown()
+
+    for wave in range(30):
+        t.right(20)
+        t.forward(30)
+        t.left(40)
+        t.forward(30)
+        t.right(20)
+
+   
     
 # ---------------------------------------------------------------------
 # Create, style and positions 3 turtle racers 
@@ -50,7 +99,6 @@ def StartRace(t_racer):
     finish_line = 400
     racer_moves = [[],[],[]]
     totals = [0,0,0]
-    travel = random.randint()
     win = str()
     flag = True
 
@@ -79,7 +127,7 @@ def StartRace(t_racer):
         for winner in range(0,len(totals)):
             # Identify who wins by their total
             if totals[winner] >= finish_line:
-                win = "Racer "+ str(winner +1) + " Wins"
+                win = "Racer "+ str(winner +1) + " made it to the water first!"
                 flag = False
                 break
                 
@@ -198,8 +246,6 @@ def WinLose(select_turtle, totals):
     else:
         msg = "Your racer didn't win"
         loses += 1
-    # clears text on screen for user if they wish to play again
-    t.clear()
 
     return wins, loses, msg
 
@@ -238,16 +284,28 @@ def main():
     # ---------------------------------------------------
     while play == "yes":
         
-        # Clear screen
+        # ---------------------------------------------------
+        # Screen Clearing 
+        # ---------------------------------------------------
         t.clear()
-        # Draw race layout
+
+        # Clear old racers 
+        for r in racers:
+            r.clear()
+            r.hideturtle()
+
+        # Clear All Messages 
+        main_msg.clear()
+        scoreboard.clear()
+
+        # Draw Race Layout
         Layout()
 
-        # Create racers 
+        # Create Racers 
         racers = Racers()
         
-        # Get users choices
-        choice = UserChoice(racers)
+        # Get Users choices
+        choice = UserChoice()
 
         # Run race 
         totals, winner_msg = StartRace(racers)
@@ -268,16 +326,17 @@ def main():
         #---------------------------------------------------
         main_msg.clear()
         # Set message loctation
-        main_msg.goto(0,200)
+        main_msg.goto(0,198)
        
         # Winner of the race message
         # Outline (balck) 
         main_msg.color("black")
         main_msg.write(winner_msg,
                        align="center",
-                       font=("Comic Sans MS", 31, "bold"))
+                       font=("Comic Sans MS", 30, "bold"))
 
         # Fill (CadetBlue1)
+        main_msg.goto(0,200)
         main_msg.color("CadetBlue1")
         main_msg.write(winner_msg,
                        align="center",
@@ -296,35 +355,16 @@ def main():
         # ---------------------------------------------------
         scoreboard.clear()
 
-        multi_msg[2].color("Black")
-        multi_msg[2].write("Wins: ",
-                           align="center",
-                           font=("Arial", 8, "normal" ))
-        multi_msg[2].penup()
-        multi_msg[2].goto(20,-100)
-        multi_msg[2].hideturtle()
-        multi_msg[2].color("Black")
-        multi_msg[2].write(total_wins,
-                           align="center",
-                           font=("Arial", 8, "normal" ))
-        
-        
-        multi_msg[2].penup()
-        multi_msg[2].goto(0,-120)
-        multi_msg[2].hideturtle()
+        scoreboard.goto(0, -100)
+        scoreboard.color("black")
+        scoreboard.write("Wins: " + str(total_wins),
+                         align="center",
+                         font=("Arial", 10, "normal"))
 
-        multi_msg[2].color("Black")
-        multi_msg[2].write("Loses: ",
-                           align= "center",
-                           font=("Arial", 8, "normal" ))
-        
-        scoreboard.penup()
-        multi_msg[2].goto(20,-120)
-        multi_msg[2].hideturtle()
-        multi_msg[2].color("Black")
-        multi_msg[2].write(total_losses,
-                           align="center",
-                           font=("Arial", 8, "normal" ))
+        scoreboard.goto(0, -130)
+        scoreboard.write("Losses: " + str(total_losses),
+                         align="center",
+                         font=("Arial", 10, "normal"))
 
         # Keep playing?
         play = input("Would you like to play again? (yes/no): ")
