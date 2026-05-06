@@ -1,7 +1,7 @@
 # ---------------------------------------------
 
 # Import libraries 
-import time
+import time 
 import random 
 import turtle as t
 
@@ -17,8 +17,9 @@ def Layout():
     t.pendown()
     t.forward(300)
     
-
+# ---------------------------------------------------------------------
 # Create, style and positions 3 turtle racers 
+# ---------------------------------------------------------------------
 def Racers():
     t_racers = []
     racer_colors = ["gold", "pink", "gray"]
@@ -38,13 +39,15 @@ def Racers():
 
     return t_racers
 
+# ---------------------------------------------------------------------
 # randomize the distance each racer moves towards the finish line
+# ---------------------------------------------------------------------
 def StartRace(t_racer):
     #Declare race tracking variables 
     finish_line = 400
     racer_moves = [[],[],[]]
     totals = [0,0,0]
-    travel = int()
+    travel = random.randint()
     win = str()
     flag = True
 
@@ -80,7 +83,12 @@ def StartRace(t_racer):
             
     return totals, win
 
+# ---------------------------------------------------------------------
 # Power-Ups for mystery box: Fireball or Boost
+# Spin animation 
+# Adjustment of totals[]
+# PowerUp will be used inside StartRace for racer_index
+# ---------------------------------------------------------------------
 def PowerUp(racer_index, totals, t_racer):
     powerups = ["fireball", "boost"]
     activate = powerups[random.randint(0,1)]
@@ -88,6 +96,7 @@ def PowerUp(racer_index, totals, t_racer):
     # Fireball will hit everyone except the racer that was given the fireball
     if activate == "fireball":
         # let the user know who got the fireball
+        # Message dissapears after a set time
         TempMessages(t_racer[racer_index], "FIREBALL", 1.5)
 
         # Loops through racers to find victims
@@ -97,19 +106,24 @@ def PowerUp(racer_index, totals, t_racer):
                 for _ in range(10):  # nested loop
                     t_racer[target].right(36)
 
-                # Speed reduction for those hit damage
-                t_racer[target].backward(15)
-                totals[target] -= 15
+                # Speed reduction for those hit damage. 
+                # Adjust totals[]
+                t_racer[target].backward(20)
+                totals[target] -= 20
 
     # Racer gets to move a bit further if given a boost
     elif activate == "boost":
         # Let the user know which racer got a boost
+        # Message dissapears after a set time
         TempMessages(t_racer[racer_index], "BOOST", 1.5)
         totals[racer_index] += 20
     
     return totals
 
-# Displays what power-up the racer got from the mystery box 
+# ---------------------------------------------------------------------
+# Displays a temporary message
+# Used for racers powerup recieved (BOOST or FIREBALL)
+# ---------------------------------------------------------------------
 def TempMessages(t_obj, message, duration=1.5):
     # Create a separate turtle so racer graphics aren't erased
     msg = t.Turtle()
@@ -133,9 +147,10 @@ def TempMessages(t_obj, message, duration=1.5):
     msg.clear()
 
     
-
+# ---------------------------------------------------------------------
 # Ask user which racer they think will when
-def UserChoice(t_racer):
+# ---------------------------------------------------------------------
+def UserChoice():
     select_turtle = str()
    
     select_turtle = input("Select a racer (gold/pink/gray): ")
