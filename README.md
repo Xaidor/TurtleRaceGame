@@ -31,13 +31,13 @@ Step 5 → First racer to cross the finish line wins.
 ## Things Still To Do
 
 ### Layout
-    - The turtles are hatching and are racing to the water.
+    - The turtles are hatched and are racing to the water. 
     - Background needs to resemble sand 
     - Create a wavy blue finish line 
 
 ### PowerUps
     - Change Fireball to a rock to better fit theme
-    
+ 
 ### 🟪 MysteryBox Function
     - MysterBox Function
         The mysterbox would need to be called in the StartRace function. I will disappear

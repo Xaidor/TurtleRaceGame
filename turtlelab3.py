@@ -5,10 +5,8 @@ import time
 import random 
 import turtle as t
 
-#Create race layout
-# --------------------------------------------
-# TODO: change background to sand color and finish line needs to be blue
-# --------------------------------------------
+# Create race layout
+
 def Layout():
     t.hideturtle()
     t.penup()
@@ -20,7 +18,7 @@ def Layout():
     # -----------------------------
     # OCEAN FILL (right side)
     # -----------------------------
-    t.goto(200, 350)
+    t.goto(200, 400)
     t.color("blue4")
     t.begin_fill()
 
@@ -38,7 +36,7 @@ def Layout():
     # -----------------------------
     # WAVY PATTERN FOR FINISH LINE
     # -----------------------------
-    t.goto(200,350)
+    t.goto(200,400)
     t.setheading(-90)
     t.pensize(8)
     t.pencolor("blue4")
@@ -54,7 +52,7 @@ def Layout():
     t.penup()
 
     # Lighter Wave
-    t.goto(206,350)
+    t.goto(206,400)
     t.setheading(-90)
     t.pensize(8)
     t.pencolor("DodgerBlue3")
@@ -85,7 +83,7 @@ def Racers():
 
         # Spaces racers vertically with gaps in between
         r.penup()
-        r.goto(-200, race * 40)
+        r.goto(-200, race * 80)
 
         t_racers.append(r)
 
@@ -141,23 +139,27 @@ def StartRace(t_racer):
 # PowerUp will be used inside StartRace for racer_index
 # ---------------------------------------------------------------------
 def PowerUp(racer_index, totals, t_racer):
-    powerups = ["fireball", "boost"]
+    powerups = ["Rock", "boost"]
     activate = powerups[random.randint(0,1)]
 
-    # Fireball will hit everyone except the racer that was given the fireball
-    if activate == "fireball":
-        # let the user know who got the fireball
+    # Rock Will Hit Everyone Except The Racer That Was Given The Rock
+    if activate == "Rock":
+        # let the user know who got the rock
         # Message dissapears after a set time
-        TempMessages(t_racer[racer_index], "FIREBALL", 1.5)
+        TempMessages(t_racer[racer_index], "THROW ROCK", 1.5)
 
         # Loops through racers to find victims
         for target in range(0, len(totals)):
             if target != racer_index:
+
+                # Rock Animation towards targets
+                RockAnimation(t_racer[racer_index], t_racer[target])
+
                 # Spin-out animation 
-                for _ in range(10):  # nested loop
+                for _ in range(10): 
                     t_racer[target].right(36)
 
-                # Speed reduction for those hit damage. 
+                # Speed reduction for hit damage
                 # Adjust totals[]
                 t_racer[target].backward(20)
                 totals[target] -= 20
@@ -186,7 +188,7 @@ def TempMessages(t_obj, message, duration=1.5):
     msg.goto(x, y + 20)
 
     # Display message
-    if message == "FIREBALL":
+    if message == "THROW ROCK":
         msg.color("red")
 
     else:
@@ -197,6 +199,79 @@ def TempMessages(t_obj, message, duration=1.5):
     time.sleep(duration)
     msg.clear()
 
+# ---------------------------------------------------------------------
+# Animation For Rock PowerUp Attack
+# ---------------------------------------------------------------------
+def RockAnimation(attacker, victim):
+    rock = t.Turtle()
+    rock.hideturtle()
+    rock.penup()
+    rock.speed(0)
+
+    # Declare Variables 
+    flag = bool()
+    x_distance = int()
+    y_distance = int()
+
+    # Initializing Variables 
+    flag = True
+    attack_travel = 5   # Steps Towards Victim
+    x_distance = 0
+    y_distance = 0
+
+    # Attacker and Victim positions
+    ax,ay = attacker.position()
+    vx,vy = victim.position()
+
+    while flag == True:
+        # Clear rock before each move and go to new location
+        rock.clear()
+        rock.goto(ax, ay)
+
+        # Draw Rock Object
+        rock.color("gray50")
+        rock.pendown()
+        rock.begin_fill()
+        rock.circle(2.3)
+        rock.end_fill()
+        rock.penup()
+        
+        # Moves the position horizontally
+        if ax > vx:
+            ax -= attack_travel
+        elif ax < vx:
+            ax += attack_travel
+
+        # Move the position vertically
+        if ay > vy:
+            ay -= attack_travel
+        elif ay < vy:
+            ay += attack_travel
+
+        # No Negative Numbers for Horizontal
+        x_distance = ax - vx
+        if x_distance < 0:
+            x_distance = vx - ax
+
+        # No negative numbers for vertical
+        y_distance = ay - vy
+        if y_distance < 0:
+            y_distance = vy - ay
+
+        # Stop Loop
+        if x_distance < attack_travel and y_distance < attack_travel:
+            flag = False
+
+        
+
+        
+
+        
+        
+
+        
+
+        
     
 # ---------------------------------------------------------------------
 # Ask user which racer they think will when
