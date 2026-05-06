@@ -35,6 +35,9 @@ Step 5 → First racer to cross the finish line wins.
     - Background needs to resemble sand 
     - Create a wavy blue finish line 
 
+### PowerUps
+    - Change Fireball to a rock to better fit theme
+    
 ### 🟪 MysteryBox Function
     - MysterBox Function
         The mysterbox would need to be called in the StartRace function. I will disappear
@@ -43,7 +46,7 @@ Step 5 → First racer to cross the finish line wins.
         For testing purposes, the powerup is given after each racers 3rd move.
     - MysteryBox Image 
         Determine the size, color, and style. Will it move or be startionary?
-
+    
 ### Clean up/Debug
     - Clean up code (In Progress)
             - Add detailed notes
