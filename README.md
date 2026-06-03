@@ -27,31 +27,5 @@ Step 5 → First racer to cross the finish line wins.
          The game tells the user if their chosen racer won or lost.
 
 ```
----
-## Things Still To Do
 
-### Layout
-    - The turtles are hatched and are racing to the water. 
-    - Background needs to resemble sand 
-    - Create a wavy blue finish line 
-
-### PowerUps
-    - Change Fireball to a rock to better fit theme
- 
-### 🟪 MysteryBox Function
-    - MysterBox Function
-        The mysterbox would need to be called in the StartRace function. I will disappear
-        after a racer reaches it at a set loctation or random loction. The locations of 
-        each mysterbox must be inline of racers path. 
-        For testing purposes, the powerup is given after each racers 3rd move.
-    - MysteryBox Image 
-        Determine the size, color, and style. Will it move or be startionary?
-    
-### Clean up/Debug
-    - Clean up code (In Progress)
-            - Add detailed notes
-            - Section each funchtion off boldly, so its easy to find
-            ` Make the code more readable
-            ` Remeove unnecessary variables
-            - Improve variable names for clarity
 
